@@ -12,6 +12,9 @@ services:
     depends_on:
       - mongo
       - redis
+    networks:
+      - api_db_net
+      - api_redis_net
 
   
   mongo:
@@ -22,16 +25,35 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
     volumes:
       - mongo_data:/data/db
+    networks:
+      - api_db_net
+      - express_db_net
 
 
   redis:
     image: redis:alpine
     container_name: redis
+    networks:
+      - api_redis_net
   
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
     container_name: mongo-express
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
       ME_CONFIG_MONGODB_SERVER: mongo
+    networks:
+      - express_db_net
+
+
+  networks:
+  api_db_net:
+  #movies-api and mongo
+    driver: bridge
+  api_redis_net:
+  #movies-api and redis 
+    driver: bridge
+  express_db_net:
+  #mongo and mongo-express 
+    driver: bridge
