@@ -53,7 +53,7 @@ services:
       - mongo   
     volumes:
       - ./seeding.json:/seeding.json 
-      - ./seeding-mongo.sh:/seed-database.sh  
+      - ./seed-database.sh:/seed-database.sh  
     environment:
       - MONGODB_DATABASE=${MONGODB_DATABASE}
       - MONGODB_URI=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017  
