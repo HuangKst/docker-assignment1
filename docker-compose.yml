@@ -1,5 +1,6 @@
-services:
+version: '3.8'
 
+services:
   api:
     image: doconnor/movies-api:1.0
     container_name: movies-api
@@ -15,7 +16,6 @@ services:
     networks:
       - api_db_net
       - api_redis_net
-
   
   mongo:
     image: mongo:8.0-rc
@@ -29,13 +29,12 @@ services:
       - api_db_net
       - express_db_net
 
-
   redis:
     image: redis:alpine
     container_name: redis
     networks:
       - api_redis_net
-  
+
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
     container_name: mongo-express
@@ -47,7 +46,7 @@ services:
       - '8081:8081'
     networks:
       - express_db_net
-  
+
   seeder:
     image: node:latest
     container_name: seeder
@@ -62,17 +61,16 @@ services:
     networks:
       - api_db_net
 
-
-  networks:
+# api_db_net: movies-api and mongo
+#   api_redis_net: movies-api and redis 
+#   express_db_net: mongo and mongo-express 
+networks:
   api_db_net:
-  #movies-api and mongo
     driver: bridge
   api_redis_net:
-  #movies-api and redis 
     driver: bridge
   express_db_net:
-  #mongo and mongo-express 
     driver: bridge
 
-  volumes:
-    mongo_data:
+volumes:
+  mongo_data:
