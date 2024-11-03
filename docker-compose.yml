@@ -47,19 +47,7 @@ services:
     networks:
       - express_db_net
 
-  seeder:
-    image: node:latest
-    container_name: seeder
-    build:
-      context: ./seeder
-    volumes:
-      - ./seeder:/usr/src/app
-    working_dir: /usr/src/app
-    command: node seed.js
-    depends_on:
-      - mongo
-    networks:
-      - api_db_net
+
 
 # api_db_net: movies-api and mongo
 #   api_redis_net: movies-api and redis 
