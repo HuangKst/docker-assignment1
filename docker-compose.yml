@@ -5,10 +5,16 @@ services:
     container_name: movies-api
     ports:
       - '9000:9000'
+    environment:
+      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/moviesDB
+      REDIS_URI: redis://redis
+      ENABLE_WRITING_HANDLERS: 'false'
     
   
   mongo:
     image: mongo:8.0-rc
+    volumes:
+      - mongo_data:/data/db
     
 
   redis:
@@ -16,9 +22,4 @@ services:
   
   mongo-express:
     image: mongo-express:1.0-20-alpine3.19
-   
-
- 
-
-    
    
