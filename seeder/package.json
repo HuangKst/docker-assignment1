@@ -1,0 +1,14 @@
+{
+    "name": "seeder",
+    "version": "1.0.0",
+    "description": "Database seeding script for MongoDB",
+    "main": "seed.js",
+    "scripts": {
+      "start": "node seed.js"
+    },
+    "dependencies": {
+      "mongodb": "^5.0.0",
+      "fs": "^0.0.1-security"
+    }
+  }
+  
