@@ -43,6 +43,8 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USERNAME}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
       ME_CONFIG_MONGODB_SERVER: mongo
+    ports:
+      - '8081:8081'
     networks:
       - express_db_net
 
