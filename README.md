@@ -5,5 +5,5 @@
   express_db_net: mongo and mongo-express 
 
 ### RUN 
-Execute the following command in the project root directory to start all services:`docker-compose up --build ` 
+Execute the following command in the project root directory to start all services:`docker-compose -f .\docker-compose.yml up -d ` 
 
