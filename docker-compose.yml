@@ -7,7 +7,7 @@ services:
     ports:
       - '9000:9000'
     environment:
-      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/moviesDB
+      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017
       REDIS_URI: redis://redis
       ENABLE_WRITING_HANDLERS: 'false'
     depends_on:
@@ -46,6 +46,23 @@ services:
       - '8081:8081'
     networks:
       - express_db_net
+
+  seed-database:
+    image: mongo:8.0-rc
+    depends_on:
+      - mongo  
+    profiles:
+      - dev  
+    volumes:
+      - ./seeding.json:/seeding.json 
+      - ./seeding-mongo.sh:/seeding-mongo.sh  
+    environment:
+      - MONGODB_DATABASE=moviesDB 
+      - MONGODB_URI=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017  
+    command:
+      /seed-database.sh  
+    networks:
+      - api_db_net 
 
 
 
