@@ -1,9 +1,18 @@
-## Agile Software Practice - Assignment 1.
-### Network 
-  api_db_net: movies-api and mongo
-  api_redis_net: movies-api and redis 
-  express_db_net: mongo and mongo-express 
+## Docker Assignment - Agile Software Practice.
 
-### RUN 
-Execute the following command in the project root directory to start all services:`docker-compose -f .\docker-compose.yml up -d ` 
+__Name:__ Zihan Huang
+
+__Demo:__ .... The link to your YouTube demonstration ....
+
+This repository contains the containerization of the mukti-container application illustrated below.
+
+![](./images/arch.png)
+
+### Database Seeding.
+
+[Briefly explain how you automated the seeding of the application's database.]
+
+### M.ulti-Stack.
+
+[Briefly explain how you support building development and production stack options.]
 

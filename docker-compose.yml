@@ -64,7 +64,7 @@ services:
 
 
 
-# api_db_net: movies-api and mongo
+#   api_db_net: movies-api and mongo
 #   api_redis_net: movies-api and redis 
 #   express_db_net: mongo and mongo-express 
 networks:
